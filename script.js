@@ -147,7 +147,8 @@ const elements = {
     mobileMenu: document.getElementById('mobile-menu'),
     closeMobileMenuBtn: document.getElementById('close-mobile-menu')
     ,
-    searchInput: document.getElementById('search-input')
+    searchInput: document.getElementById('search-input'),
+    searchInputMobile: document.getElementById('search-input-mobile')
 };
 
 // Inicializar
@@ -742,6 +743,16 @@ if (elements.searchInput) {
         renderStore();
     }, 220);
     elements.searchInput.addEventListener('input', onSearch);
+}
+// wire mobile menu search to same handler
+if (elements.searchInputMobile) {
+    const onSearchMobile = debounce((e) => {
+        state.searchQuery = e.target.value || '';
+        // mirror into header input if present
+        if (elements.searchInput) elements.searchInput.value = state.searchQuery;
+        renderStore();
+    }, 220);
+    elements.searchInputMobile.addEventListener('input', onSearchMobile);
 }
 
 // Global keyboard: ESC closes modal or mobile menu

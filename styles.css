@@ -325,7 +325,7 @@ h1, .library-title {
 
 .book-cover {
     width: 100%;
-    height: 360px;
+    height: clamp(220px, 36vh, 480px);
     object-fit: cover;
 }
 
@@ -1022,6 +1022,9 @@ h1, .library-title {
         display: none;
     }
 
+    /* hide header search on small screens (use mobile menu search instead) */
+    .header-search { display: none; }
+
     .mobile-menu-btn {
         display: block;
     }
@@ -1032,7 +1035,7 @@ h1, .library-title {
     }
 
     .book-cover {
-        height: 350px;
+        height: clamp(180px, 34vh, 350px);
     }
 
     .reader-header-content {
