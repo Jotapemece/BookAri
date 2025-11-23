@@ -158,6 +158,12 @@ document.addEventListener('DOMContentLoaded', () => {
     setupMobileMenu();
 });
 
+// Set footer year dynamically if present
+document.addEventListener('DOMContentLoaded', () => {
+    const fy = document.getElementById('footer-year');
+    if (fy) fy.textContent = new Date().getFullYear();
+});
+
 // Cargar datos del localStorage
 function loadFromLocalStorage() {
     const savedBalance = localStorage.getItem('bookari_balance');
